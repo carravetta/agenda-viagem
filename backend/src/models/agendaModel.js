@@ -14,14 +14,13 @@ const NeDB= require('nedb');
             console.log(`ERRO DE BANCO DE DADOS ${err}`);
             reject(err);
           }else{
-            console.log(`Agendamentos: ${JSON.stringify(agendamentos)}`);
             resolve(agendamentos)
           }
       });
     });
   }
 
-  const adicionarData = async (novoAgendamento)=>{
+  const addDate = async (novoAgendamento)=>{
     var agendamento = new Agendamento(novoAgendamento.nome, novoAgendamento.email, novoAgendamento.dataSaida, novoAgendamento.dataRetorno, novoAgendamento.hora);
 
     return new Promise ((resolve, reject)=>{
@@ -31,17 +30,59 @@ const NeDB= require('nedb');
           reject(err)          
         }
         else{
-          console.log(`Agendamento criado com sucesso`, agendamento);
           resolve(agendamento);  
         }
       });
     });
   }
 
-  const removeData = async (agendamento)=>{
+  const removeAgendamento = async (idDelete)=>{
+    return new Promise ((resolve, reject)=>{
+      db.remove({_id: idDelete}, {}, (err, numRemoved)=>{
+        if(err){
+          reject({'message': 'erro banco de dados'});
+        }else{
+          resolve(numRemoved);
+        }
+      });
+    });
+  }
 
+  const removeAll = async ()=>{
+    return new Promise ((resolve, reject)=>{
+      db.remove({}, {multi: true}, (err, removed)=>{
+        if(err){
+          reject(err);
+        }else{
+          resolve(removed);
+        }
+      });
+    });
+  }
+
+  const update = async (idUpdate, newValues)=>{
+
+    var newDate = new Agendamento(newValues._nome, newValues._email, newValues._dataSaida, newValues._dataRetorno, newValues._hora);
+    console.log(JSON.stringify(newDate));
+    console.log(newDate.dataRetorno);
+    
+    return new Promise ((resolve, reject)=>{
+      db.update({_id : idUpdate}, {$set: {
+        _dataSaida: newDate.dataSaida,
+        _dataRetorno: newDate.dataRetorno,
+        _hora: newDate.hora
+      }}, (err, replaced)=>{
+        if(err){
+          reject(err);
+        }else{
+          console.log();
+          
+          resolve(replaced);
+        }
+      });
+    });
   }
   
 module.exports = {
-  getAll, adicionarData
+  getAll, addDate, removeAgendamento, update, removeAll
 }

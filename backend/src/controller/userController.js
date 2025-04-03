@@ -7,7 +7,7 @@ const login = async (req, res)=>{
 
 const cadastroUsuario = async (req, res)=>{
     const newUser = await userModel.cadastroUsuario(req.body);
-    return res.status(200).json(JSON.stringify(newUser));
+    return res.status(201).json(JSON.stringify(newUser));
 }
 
 module.exports = {login, cadastroUsuario}
