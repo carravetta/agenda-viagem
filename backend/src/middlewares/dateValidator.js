@@ -1,0 +1,17 @@
+const Ajv  = require('ajv');
+const agendaModel = require('../models/agendaModel');
+
+const validateNewDate = (req, res)=>{
+
+    const {body} = req;
+
+    const schema = {
+        "type" : "object",
+        "properties" : {
+            "_dataSaida": { "type": "string", "format": "date-time" },
+            "_dataRetorno": { "type": "string", "format": "date-time" },
+            "_hora": { "type": "string", "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$" }
+        },
+        'required' : ['_dataSaida', '_dataRetorno', '_hora']
+    }
+}
