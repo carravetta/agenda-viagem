@@ -1,8 +1,9 @@
+
+
 class Agendamento{
     constructor( nome, email, dataSaida, dataRetorno, hora){
     
-        this._nome = nome;  
-        this._email = email;
+        this._user = new User(nome, '', email);
         this._dataSaida = dataSaida;
         this._dataRetorno = dataRetorno;
         this._hora = hora
@@ -24,9 +25,13 @@ class Agendamento{
     get dataRetorno() {
         return this._dataRetorno;
     }
-
+ 
     get hora() {
         return this._hora;
+    }
+
+    get user (){
+        return this._user;
     }
 
 }

@@ -14,4 +14,15 @@ const validateNewDate = (req, res)=>{
         },
         'required' : ['_dataSaida', '_dataRetorno', '_hora']
     }
+
+    const ajv = new Ajv();
+    const validate = ajv.copile(schema);
+    const isValid = validate(body);
+
+    if(!isValid)
+        return res.status(400).json({message : "Campos inválidos, verifique"});
+
+    next();
 }
+
+module.exports = {validateNewDate}
