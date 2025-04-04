@@ -1,5 +1,4 @@
 const Ajv  = require('ajv');
-const agendaModel = require('../models/agendaModel');
 
 const validateNewDate = (req, res)=>{
 
