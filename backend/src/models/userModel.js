@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require ('bcryptjs');
 const { log } = require('console');
 
+
     const db = new NeDB({
         filename: 'userLogin.db',
         autoload: true
@@ -26,14 +27,12 @@ const getAll = async ()=>{
 const findUser = async (email)=>{
     const emailFormat = email.trim().toLowerCase();
     
-   
     return new Promise((resolve, reject)=>{ 
         db.findOne({_email : emailFormat}, (err, user)=>{
                     
         if(err)
             reject(err) ;
         else if(user === null){
-            console.log(`callback.length ${user}`);
             resolve (false);
         }
         else
@@ -66,6 +65,8 @@ const cadastroUsuario = async (novoUsuario)=>{
 }
 
 const searchByEmail = async (email)=>{
+    console.log("SEARHING...");
+    
     return new Promise((resolve, reject)=>{
         db.findOne({_email : email}, (err, user)=>{
             if(err){
@@ -73,38 +74,39 @@ const searchByEmail = async (email)=>{
             }else{
             
                 if(!user)
-                    return null
+                    resolve(null)
                     
-                resolve(JSON.stringify(user));
+                resolve(user);
             }
         });
     });
 }
 
 const login = async (user)=>{
+    console.log(typeof user.email);
+    
+    console.log(`tentativa de login de ${user.email}`);
          
     const userPassword = await searchByEmail(user.email);
-    console.log(userPassword);
-    
-    if(userPassword == null || ""){
+     console.log(`userPassword ${userPassword}`);
+     
+    if(userPassword == null || "" || undefined){
         return {
             message: "Usuário não encontrado!", 
         };
     }
 
-    console.log(userPassword._senha);
     const validatePassword = await bcrypt.compare(user.senha, userPassword._senha.toString());
-    
     
     if(!validatePassword){
         
         return { 
-            message: "Senha inválida", 
-            };
+                message: "Senha inválida", 
+                };
     }
-
-    const token = jwt.sign({email : user}, process.env.JWT_SECRET, {expiresIn : '1h'});
-        return {message: 'Login bem sucedido!',token};
+    
+    const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn : '1h'});
+        return {message: 'Login bem sucedido!', token};
 }
 
 module.exports = {login, cadastroUsuario}

@@ -6,7 +6,7 @@ const authMiddleware = require('./middlewares/auth');
 const router = express.Router();
 
 
-router.get('/login', userController.login);
+router.post('/login', userController.login);
 router.post('/cadastro', userController.cadastroUsuario);
 router.get('/agendamentos', authMiddleware.auth, agendaController.getAll);
 router.post('/agendamentos',authMiddleware.auth, dateValidatorMiddleware.validateNewDate, agendaController.addDate);

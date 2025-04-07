@@ -1,0 +1,64 @@
+header{
+    width: 100%;
+    color: $primary-dark;
+}
+
+.header-logo img{
+    max-width: 500px;
+    z-index: 99;
+}
+
+
+.header-button{
+    color: $white-normal;
+    border: solid 1px $primary-default;
+    background-color: $primary-default;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-header:hover{
+    animation: scaleButton 0.8s alternate infinite;
+   
+}
+
+.header-button:hover{
+    background-color: $primary-dark;
+}
+
+@keyframes scaleButton {
+    from{
+        transform: scale(1);
+    } to{
+        transform: scale(1.05);
+    }
+}
+
+@media screen and (max-width: 768px){
+    
+    .header-content{
+
+        flex-direction: column;
+        width: 100%;
+        gap: 14px;
+        min-height: 40vh;
+        
+        .header-user{
+            visibility: hidden;
+            flex: 1;
+        }
+
+        .btn-header{
+            order: 3;
+            flex: 1;
+        }
+
+        .header-logo{
+            order: 1;
+            flex: 1;
+        }
+    }
+
+
+}

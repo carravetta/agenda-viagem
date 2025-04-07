@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="public/style.css">
+    <title>Agendamento de Horario</title>
+</head>
+<body>
+    <div class="bg-home">
+        <header>
+            <nav class="header-content container">
+                <div class="btn-header" data-aos="fade-up" data-aos-delay="300">
+                    <a class="header-button" href="#">Agendar Horário</a>
+                </div>
+    
+                <div class="header-logo" data-aos="fade-down" data-aos-delay="300">
+                    <img src="/public/assets/logo.png" alt="Foto do carro" data-aos="flip-right" data-aos-delay="300" >
+                </div>
+    
+                <div class="header-user" data-aos="fade-down" data-aos-delay="300">
+                    <a  href="">Usuario</a>
+                </div>
+            </nav>
+            <div class="main-title container" data-aos="fade-left" data-aos-delay="300">
+                <h1>Sistema de agendamento de Horários</h1>
+            </div>
+        </header>
+    </div>
+
+    <section class="agendamentos">
+        <h2>Agendamentos</h2>
+        <div class="container">       
+            <table>
+                <thead>
+                    <tr data-aos="fade-left" data-aos-delay="300">
+                        <th>#</th>
+                        <th>Usuário</th>
+                        <th>Data de saída</th>
+                        <th class="th-hr-saida">Horario de Saída</th>
+                        <th>Data de retorno</th>
+                        <th class="th-hr-retorno">Horário de retorno</th>
+                        <th class="status">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr data-aos="fade-left" data-aos-delay="350">
+                        <th scope="row">1</th>
+                        <th>Marlom Muller</th>
+                        <td>27/06/2024</td>
+                        <td class="hr-saida">10:00</td>
+                        <td>27/06/2024</td>
+                        <td class="hr-retorno">16:00</td>
+                        <td><i class="fa-solid fa-circle-check"></i></td>
+                    </tr>
+                    
+                    <tr data-aos="fade-left" data-aos-delay="400">
+                        <th scope="row">2</th>
+                        <th>Levi Sousa</th>
+                        <td>28/06/2024</td>
+                        <td class="hr-saida">08:00</td>
+                        <td>28/06/2024</td>
+                        <td class="hr-retorno">11:00</td>
+                        <td><i class="fa-solid fa-circle-xmark"></i></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </section>
+   
+    <dialog class="container">
+        <section class="modal modal-content ">
+            <h1>Agendar</h1>
+            <form action="POST" class="form-content">
+                <label for="dt-saida">Data de Saída</label>
+                <input type="date" name="dt-saida" class="dt-saida">
+                <label for="dt-saida">Hora de Saída</label>
+                <input type="time" name="hr-saida" class="hr-saida">
+
+                <label for="dt-retorno">Data de Retorno</label>
+                <input type="date" name="dt-retorno" class="dt-retorno">
+                <label for="hr-saida">Hora de Retorno</label>
+                <input type="time" name="hr-retorno" class="hr-saida">
+                <div class="btn-salvar">
+                    <button type="submit">Salvar</button>
+                    <button type="button"  class="btn-cancel">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </dialog>
+
+    <footer>
+        <img src="public/assets/logo-branco.png" alt="Logo hidro" data-aos="zoom-in">
+        <p>Desenvolvido por Lucas Carravetta</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/7ea68cc2f4.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/public/js/scripts.js"></script>
+</body>
+</html>

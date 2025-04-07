@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+header {
+  width: 100%;
+  color: #023e8a;
+}
+
+.header-logo img {
+  max-width: 500px;
+  z-index: 99;
+}
+
+.header-button {
+  color: #fff;
+  border: solid 1px #0077b6;
+  background-color: #0077b6;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn-header:hover {
+  animation: scaleButton 0.8s alternate infinite;
+}
+
+.header-button:hover {
+  background-color: #023e8a;
+}
+
+@keyframes scaleButton {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+    min-height: 40vh;
+  }
+  .header-content .header-user {
+    visibility: hidden;
+    flex: 1;
+  }
+  .header-content .btn-header {
+    order: 3;
+    flex: 1;
+  }
+  .header-content .header-logo {
+    order: 1;
+    flex: 1;
+  }
+}
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bg-home::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: linear-gradient(to bottom, rgba(237, 234, 239, 0.1), #fff), url(/assets/strada.jpg);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  opacity: 0.9;
+}
+
+.main-title {
+  text-align: center;
+  color: #023e8a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  min-height: 80vh;
+}
+.main-title h1 {
+  order: 2;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .main-title {
+    min-height: 60vh;
+  }
+  .main-title h1 {
+    font-size: 24px;
+  }
+}
+.agendamentos {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: 80vh;
+}
+
+table {
+  background-color: #fff;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+}
+table tr {
+  background: linear-gradient(0.25turn, #ade8f4, #caf0f8);
+}
+table tr + tr {
+  margin-top: 10px;
+}
+
+table, th {
+  padding: 12px;
+}
+
+table, th, td {
+  border: none;
+}
+
+input {
+  background-color: #fefbff;
+  font-family: "Sora", sans-serif;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+tbody tr {
+  transition: background 0.5s;
+}
+
+tbody tr:hover {
+  background: rgba(0, 119, 182, 0.5);
+  animation: tableTransform 1s forwards;
+}
+
+table th {
+  cursor: default;
+}
+
+@keyframes tableTransform {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+footer {
+  background-color: #181c28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-direction: column;
+  color: #fff;
+  padding: 24px;
+}
+footer img {
+  max-width: 400px;
+}
+footer p {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  table .hr-saida, .hr-retorno, .th-hr-saida, .th-hr-retorno {
+    display: none;
+  }
+  table {
+    max-width: 400px;
+    font-size: 10px;
+    overflow: hidden;
+  }
+}
+.modal-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 468px;
+  border-radius: 5px;
+  padding: 8px;
+  z-index: 999;
+}
+
+dialog {
+  border: none;
+  margin: auto !important;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.form-content {
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 290px;
+  padding: 24px;
+  gap: 10px;
+}
+.form-content label {
+  font-weight: bold;
+}
+.form-content .btn-salvar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.form-content .btn-salvar button, .form-content .btn-salvar a {
+  min-width: 100px;
+  max-width: 100px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-weight: 800;
+  margin-top: 24px;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-color: #fff;
+}
+
+button {
+  font-family: "Sora", sans-serif;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+svg {
+  width: 100%;
+}
+
+a {
+  cursor: poiner;
+  text-decoration: none;
+}/*# sourceMappingURL=style.css.map */
