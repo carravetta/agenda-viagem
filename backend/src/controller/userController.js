@@ -2,7 +2,6 @@ const userModel = require('../models/userModel');
 
 const login = async (req, res,)=>{
     const user = await userModel.login(req.body);
-    console.log(`COOKIE: ${user.token}`);
     
     if(user.token){
         res.cookie('token', user.token, {
@@ -11,6 +10,8 @@ const login = async (req, res,)=>{
             sameSite: 'Lax',
             maxAge: 360000
         });
+        console.log("USER CONTROLLER", user);
+        
         return res.status(200).json(user);
     }else
     return res.status(400).json(user);

@@ -5,9 +5,9 @@
     outline: none;
 }
 
-@import "partials/colors";
-@import "partials/header";
-@import "partials/layout";
+@import "/frontend/public/partials/colors";
+@import "/frontend/public/partials/header";
+@import "/frontend/public/partials/layout";
 body{
     font-family: 'Sora', sans-serif;
     width: 100%;

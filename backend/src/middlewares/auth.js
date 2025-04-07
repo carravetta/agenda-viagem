@@ -4,9 +4,7 @@ const auth = (req, res)=>{
 
     //const token = req.header('Authorization');
     const token = req.cookies.token;
-    if(!token){
-        console.log(`!TOKEN`);
-        
+    if(!token){        
         return res.status(401).json({message : "Acesso negado!"});
     }
 

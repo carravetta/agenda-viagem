@@ -65,7 +65,6 @@ const cadastroUsuario = async (novoUsuario)=>{
 }
 
 const searchByEmail = async (email)=>{
-    console.log("SEARHING...");
     
     return new Promise((resolve, reject)=>{
         db.findOne({_email : email}, (err, user)=>{
@@ -83,12 +82,8 @@ const searchByEmail = async (email)=>{
 }
 
 const login = async (user)=>{
-    console.log(typeof user.email);
-    
-    console.log(`tentativa de login de ${user.email}`);
-         
+             
     const userPassword = await searchByEmail(user.email);
-     console.log(`userPassword ${userPassword}`);
      
     if(userPassword == null || "" || undefined){
         return {
@@ -106,7 +101,8 @@ const login = async (user)=>{
     }
     
     const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn : '1h'});
-        return {message: 'Login bem sucedido!', token};
+    
+        return {user, token};
 }
 
 module.exports = {login, cadastroUsuario}

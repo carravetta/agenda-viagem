@@ -1,3 +1,4 @@
+
 const fetchLogin = async()=>{
     
     const response = await fetch('http://localhost:3000/login', {
@@ -8,26 +9,34 @@ const fetchLogin = async()=>{
             email: document.getElementById('email').value,
             senha: document.getElementById('senha').value
         })
-
     });
+
    const login = await response.json();
-   console.log(login);
-   
+
    if(login === null || login === undefined){
         return "Usuario inválido!"
    }else{
-        localStorage.setItem('token', login.token);
+        console.log(login);
+        
         return login;
    }
 }
 
-const button  = ()=>{
+const button = ()=>{
     const buttonSubmit = document.querySelector('button');
-    buttonSubmit.addEventListener('click', (event)=>{
+   
+    buttonSubmit.addEventListener('click', async (event)=>{
         event.preventDefault();
-        fetchLogin();     
-    })
 
+        const user = await fetchLogin();
+    
+        if(user.token){
+            window.location.href = "http://127.0.0.1:5500/frontend/public/view/index.html"
+            return user;
+        }else{         
+            return user.message;
+        }
+    });
 }
-
+ 
 button();
