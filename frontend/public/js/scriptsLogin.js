@@ -31,7 +31,7 @@ const button = ()=>{
         const user = await fetchLogin();
     
         if(user.token){
-            window.location.href = "http://127.0.0.1:5500/frontend/public/view/index.html"
+            window.location.href = "/view/index.html"
             return user;
         }else{         
             return user.message;

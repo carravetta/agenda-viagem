@@ -1,6 +1,6 @@
 const Ajv  = require('ajv');
 
-const validateNewDate = (req, res)=>{
+const validateNewDate = (req, res, next)=>{
 
     const {body} = req;
 

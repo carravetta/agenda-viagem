@@ -4,8 +4,9 @@ const loadData = async ()=>{
         credentials: "include"
     });
     const agenda = await response.json();
-    console.log(agenda);
-
+    return agenda;
 }
 
-loadData();
+const novaViagem = async () =>{
+    
+}
