@@ -7,6 +7,6 @@ const loadData = async ()=>{
     return agenda;
 }
 
-const novaViagem = async () =>{
+const montaTabela = async () =>{
     
 }
