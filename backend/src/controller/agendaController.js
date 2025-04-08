@@ -2,9 +2,9 @@
 const { log } = require('console');
 const agendaModel = require('../models/agendaModel');
 
-const getAll = async (_req, res)=>{
+const getAll = async (req, res)=>{
     const agendamentos = await agendaModel.getAll();
-    return res.status(200).json(agendamentos);
+    return res.status(200).json({agendamentos : agendamentos, user: req.user});
 }
 
 const addDate = async (req, res)=>{  

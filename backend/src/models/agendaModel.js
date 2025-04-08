@@ -13,7 +13,7 @@ const NeDB= require('nedb');
           if(err){
             console.log(`ERRO DE BANCO DE DADOS ${err}`);
             reject(err);
-          }else{
+          }else{                  
             resolve(agendamentos)
           }
       });
@@ -21,7 +21,8 @@ const NeDB= require('nedb');
   }
 
   const addDate = async (novoAgendamento)=>{
-    var agendamento = new Agendamento(novoAgendamento.nome, novoAgendamento.email, novoAgendamento.dataSaida, novoAgendamento.dataRetorno, novoAgendamento.hora);
+    const user = new User (novoAgendamento.nome, "", novoAgendamento.email);
+    var agendamento = new Agendamento(user, novoAgendamento.dataSaida, novoAgendamento.dataRetorno, novoAgendamento.hora, novoAgendamento.horRetorno);
 
     return new Promise ((resolve, reject)=>{
       db.insert(agendamento, (err, agendamento)=>{
@@ -62,10 +63,7 @@ const NeDB= require('nedb');
 
   const update = async (idUpdate, newValues)=>{
 
-    var newDate = new Agendamento(newValues._nome, newValues._email, newValues._dataSaida, newValues._dataRetorno, newValues._hora);
-    console.log(JSON.stringify(newDate));
-    console.log(newDate.dataRetorno);
-    
+    var newDate = new Agendamento(newValues._nome, newValues._email, newValues._dataSaida, newValues._dataRetorno, newValues._hora);    
     return new Promise ((resolve, reject)=>{
       db.update({_id : idUpdate}, {$set: {
         _dataSaida: newDate.dataSaida,
@@ -74,9 +72,7 @@ const NeDB= require('nedb');
       }}, (err, replaced)=>{
         if(err){
           reject(err);
-        }else{
-          console.log();
-          
+        }else{        
           resolve(replaced);
         }
       });

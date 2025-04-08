@@ -92,17 +92,20 @@ const login = async (user)=>{
     }
 
     const validatePassword = await bcrypt.compare(user.senha, userPassword._senha.toString());
+    console.log(validatePassword);
     
     if(!validatePassword){
         
         return { 
                 message: "Senha inválida", 
-                };
+            };
     }
-    
-    const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn : '1h'});
-    
-        return {user, token};
+    const {_nome, _email} = userPassword;
+       
+    const token = jwt.sign({nome: _nome, email: _email}, process.env.JWT_SECRET, {expiresIn : '1h'});
+        
+    //const token = jwt.sign({user}, process.env.JWT_SECRET, {expiresIn : '1h'});
+        return token;
 }
 
 module.exports = {login, cadastroUsuario}
