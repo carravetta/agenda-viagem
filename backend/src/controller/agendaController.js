@@ -8,14 +8,12 @@ const getAll = async (req, res)=>{
 }
 
 const addDate = async (req, res)=>{  
-    const agendamento = await agendaModel.addDate(req.body);
-    return res.status(201).json(agendamento);
+    const agendamento = await agendaModel.addDate(req.body, req.user);
+    return res.status(201).json({agendamento: agendamento, user: req.user});
 }
 
 const removeAgendamento = async (req, res)=>{
-    var {id} = req.params;
-    console.log(id);
-    
+    var {id} = req.params;   
     const removeData = await agendaModel.removeAgendamento(id);
     return res.status(200).json(removeData);
 }

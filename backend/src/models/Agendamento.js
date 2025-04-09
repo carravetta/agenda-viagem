@@ -1,4 +1,4 @@
-
+const User = require('./User');
 
 class Agendamento{
     constructor( nome, email, dataSaida, dataRetorno, hora, horaRetorno){

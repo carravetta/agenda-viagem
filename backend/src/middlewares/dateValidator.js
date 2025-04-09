@@ -15,7 +15,7 @@ const validateNewDate = (req, res, next)=>{
     }
 
     const ajv = new Ajv();
-    const validate = ajv.copile(schema);
+    const validate = ajv.compile(schema);
     const isValid = validate(body);
 
     if(!isValid)

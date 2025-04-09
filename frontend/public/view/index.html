@@ -58,7 +58,7 @@
     <dialog class="container">
         <section class="modal modal-content ">
             <h1>Agendar</h1>
-            <form action="POST" class="form-content">
+            <div class="form-content">
                 <label for="dt-saida">Data de Saída</label>
                 <input type="date" name="dt-saida" class="dt-saida">
                 <label for="dt-saida">Hora de Saída</label>
@@ -67,12 +67,12 @@
                 <label for="dt-retorno">Data de Retorno</label>
                 <input type="date" name="dt-retorno" class="dt-retorno">
                 <label for="hr-saida">Hora de Retorno</label>
-                <input type="time" name="hr-retorno" class="hr-saida">
+                <input type="time" name="hr-retorno" class="hr-retorno">
                 <div class="btn-salvar">
-                    <button type="submit">Salvar</button>
+                    <button type="submit" class="btn-salvar">Salvar</button>
                     <button type="button"  class="btn-cancel">Cancelar</button>
                 </div>
-            </form>
+            </div>
         </section>
     </dialog>
 
@@ -84,7 +84,7 @@
     <script src="https://kit.fontawesome.com/7ea68cc2f4.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="/js/scripts.js"></script>
-    <script src="/js/scriptsLogin.js"></script>
+   
     <script src="/js/scriptsAgendamento.js"></script>
 
 </body>

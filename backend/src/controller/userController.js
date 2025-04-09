@@ -20,4 +20,8 @@ const cadastroUsuario = async (req, res,)=>{
     return res.status(201).json(newUser);
 }
 
+const getUser = async (req, res)=>{
+    const user = await userModel.getUser();
+}
+
 module.exports = {login, cadastroUsuario}

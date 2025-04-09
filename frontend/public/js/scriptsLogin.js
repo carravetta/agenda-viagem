@@ -16,13 +16,12 @@ const fetchLogin = async()=>{
    if(login === null || login === undefined){
         return "Usuario inválido!"
    }else{
-    console.log(login);
         return login;  
    }
 }
 
-const button = ()=>{
-    const buttonSubmit = document.querySelector('button');
+const buttonLogin = ()=>{
+    const buttonSubmit = document.querySelector('.btn-logar');
    
     buttonSubmit.addEventListener('click', async (event)=>{
         event.preventDefault();
@@ -38,4 +37,4 @@ const button = ()=>{
     });
 }
  
-button();
+buttonLogin();

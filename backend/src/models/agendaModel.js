@@ -1,6 +1,8 @@
 const { log } = require('console');
+const User = require('./User');
 const Agendamento = require("./Agendamento");
 const NeDB= require('nedb');
+
 
     const db = new NeDB({
         filename: 'agendamento.db',
@@ -20,10 +22,9 @@ const NeDB= require('nedb');
     });
   }
 
-  const addDate = async (novoAgendamento)=>{
-    const user = new User (novoAgendamento.nome, "", novoAgendamento.email);
-    var agendamento = new Agendamento(user, novoAgendamento.dataSaida, novoAgendamento.dataRetorno, novoAgendamento.hora, novoAgendamento.horRetorno);
+  const addDate = async (novoAgendamento, userLogin)=>{
 
+    var agendamento = new Agendamento(userLogin.nome, userLogin.email, novoAgendamento.dataSaida, novoAgendamento.dataRetorno, novoAgendamento.hora, novoAgendamento.horaRetorno);    
     return new Promise ((resolve, reject)=>{
       db.insert(agendamento, (err, agendamento)=>{
         if(err){
