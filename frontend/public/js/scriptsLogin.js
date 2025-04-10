@@ -22,12 +22,12 @@ const fetchLogin = async()=>{
 
 const buttonLogin = ()=>{
     const buttonSubmit = document.querySelector('.btn-logar');
-   
+    
     buttonSubmit.addEventListener('click', async (event)=>{
         event.preventDefault();
 
         const token = await fetchLogin();
-    
+        console.log(token);
         if(token){
             window.location.href = "/view/index.html"
             return token;

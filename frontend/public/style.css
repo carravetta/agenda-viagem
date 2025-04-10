@@ -72,7 +72,7 @@ header {
   align-items: center;
 }
 
-.bg-home::before {
+.header-content::before {
   content: "";
   display: block;
   position: absolute;
@@ -119,7 +119,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 28px;
-  height: 80vh;
+  height: 100%;
 }
 
 table {

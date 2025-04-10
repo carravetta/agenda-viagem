@@ -16,7 +16,7 @@ const NeDB= require('nedb');
             console.log(`ERRO DE BANCO DE DADOS ${err}`);
             reject(err);
           }else{                  
-            resolve(agendamentos)
+            resolve(agendamentos);
           }
       });
     });

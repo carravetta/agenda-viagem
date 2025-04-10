@@ -10,6 +10,13 @@ const loadData = async ()=>{
     return agenda;
 }
 
+const getUser = async()=>{
+    const response = await fetch("http://localhost:3000/login", {
+        method: 'GET',
+        credentials: "include"
+    });
+}
+
 const fetchAdionaData = async()=>{
     const response = await fetch('http://localhost:3000/agendamentos', {
         method : 'POST',
@@ -26,7 +33,6 @@ const fetchAdionaData = async()=>{
     const novoAgendamento = await response.json();
     
     return novoAgendamento
-
 }
 
 const novoAgendamento = async ()=>{
@@ -34,6 +40,7 @@ const novoAgendamento = async ()=>{
     const btnSalvar = document.querySelector('.btn-salvar');
 
     btnSalvar.addEventListener('click', async()=>{
+       console.log(btnSalvar);
        
         const novaData = await fetchAdionaData();
         if(novaData){
@@ -51,11 +58,9 @@ const montaTabela = async () =>{
     const agenda = await loadData();     
     let delay = 300;
     const tbody = document.querySelector('tbody');
-    console.log(JSON.stringify(agenda));
-    
+    if(agenda){
     usuarioLogado.innerHTML = agenda.agendamentos[0]._user._email;
     agenda.agendamentos.forEach((element, index) => {
-       
         
         const tr = document.createElement('tr');
         const thIndex = document.createElement('th'); 
@@ -70,11 +75,11 @@ const montaTabela = async () =>{
         tr.setAttribute("data-aos-delay", delay);
         
         delay+=50;
-        thIndex.innerHTML = index;
-        thNome.innerHTML = element._nome
-        tdSaida.innerHTML = element._dataSaida;
+        thIndex.innerHTML = index+1;
+        thNome.innerHTML = agenda.agendamentos[index]._user._nome
+        tdSaida.innerHTML = dateFormat(element._dataSaida);
         tdHora.innerHTML = element._hora;
-        tdRetorno.innerHTML = element._dataRetorno;
+        tdRetorno.innerHTML = dateFormat(element._dataRetorno);
         tdHoraRetorno.innerHTML = element._horaRetorno;
 
         tbody.appendChild(tr);
@@ -85,8 +90,14 @@ const montaTabela = async () =>{
         tr.appendChild(tdRetorno);
         tr.appendChild(tdHoraRetorno);
     });
+    }
 }
 
+const dateFormat = (date)=>{
+    let data = new Date(date);
+    let dateFormat = new Intl.DateTimeFormat('pt-BR').format(data);
+    return dateFormat;
+}
 
 montaTabela();
 novoAgendamento();
