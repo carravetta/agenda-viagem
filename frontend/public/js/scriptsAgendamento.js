@@ -4,7 +4,7 @@ const loadData = async ()=>{
         method: 'GET',
         credentials: "include"
     });
-      
+
     const agenda = await response.json();    
     
     return agenda;
@@ -15,6 +15,9 @@ const getUser = async()=>{
         method: 'GET',
         credentials: "include"
     });
+    console.log(response);
+    
+    return await response.json();
 }
 
 const fetchAdionaData = async()=>{
@@ -55,11 +58,12 @@ const novoAgendamento = async ()=>{
 
 const montaTabela = async () =>{
     const usuarioLogado = document.querySelector('.header-user');
+    const user = await getUser();
     const agenda = await loadData();     
     let delay = 300;
     const tbody = document.querySelector('tbody');
     if(agenda){
-    usuarioLogado.innerHTML = agenda.agendamentos[0]._user._email;
+    usuarioLogado.innerHTML = user.email;
     agenda.agendamentos.forEach((element, index) => {
         
         const tr = document.createElement('tr');

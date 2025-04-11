@@ -22,7 +22,9 @@ const getAll = async ()=>{
       });
     });
   }
+const getUser = (email)=>{
 
+}
 
 const findUser = async (email)=>{
     const emailFormat = email.trim().toLowerCase();
@@ -92,6 +94,7 @@ const login = async (user)=>{
     }
 
     const validatePassword = await bcrypt.compare(user.senha, userPassword._senha.toString());
+    console.log(validatePassword);
     
     if(!validatePassword){
         

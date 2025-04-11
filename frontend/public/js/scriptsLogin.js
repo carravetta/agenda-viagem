@@ -12,6 +12,7 @@ const fetchLogin = async()=>{
     });
 
    const login = await response.json();
+   
 
    if(login === null || login === undefined){
         return "Usuario inválido!"
@@ -27,12 +28,13 @@ const buttonLogin = ()=>{
         event.preventDefault();
 
         const token = await fetchLogin();
-        console.log(token);
-        if(token){
+        if(!token.message){
             window.location.href = "/view/index.html"
             return token;
-        }else{         
-            return {message: 'usuário inválido'};
+        }else{    
+            console.log(token);
+                 
+            return {message: 'usuário inválido'};            
         }
     });
 }
