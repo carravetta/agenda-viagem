@@ -28,12 +28,12 @@ const buttonLogin = ()=>{
         event.preventDefault();
 
         const token = await fetchLogin();
+        console.log(`TOKEN ${JSON.stringify(token)}`);
+        
         if(!token.message){
             window.location.href = "/view/index.html"
             return token;
-        }else{    
-            console.log(token);
-                 
+        }else{                         
             return {message: 'usuário inválido'};            
         }
     });

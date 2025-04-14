@@ -22,9 +22,6 @@ const getAll = async ()=>{
       });
     });
   }
-const getUser = (email)=>{
-
-}
 
 const findUser = async (email)=>{
     const emailFormat = email.trim().toLowerCase();

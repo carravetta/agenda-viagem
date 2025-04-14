@@ -15,7 +15,6 @@ const getUser = async()=>{
         method: 'GET',
         credentials: "include"
     });
-    console.log(response);
     
     return await response.json();
 }
@@ -43,7 +42,6 @@ const novoAgendamento = async ()=>{
     const btnSalvar = document.querySelector('.btn-salvar');
 
     btnSalvar.addEventListener('click', async()=>{
-       console.log(btnSalvar);
        
         const novaData = await fetchAdionaData();
         if(novaData){
@@ -62,45 +60,46 @@ const montaTabela = async () =>{
     const agenda = await loadData();     
     let delay = 300;
     const tbody = document.querySelector('tbody');
+    let index =1; 
     if(agenda){
-    usuarioLogado.innerHTML = user.email;
-    agenda.agendamentos.forEach((element, index) => {
+        usuarioLogado.innerHTML = user.email;
+        for(var x = agenda.agendamentos.length-1; x>=0; x--){            
+           
+            const tr = document.createElement('tr');
+            const thIndex = document.createElement('th'); 
+            const thNome = document.createElement('th');
+            const tdSaida = document.createElement('td');    
+            const tdHora = document.createElement('td'); 
+            const tdRetorno = document.createElement('td');
+            const tdHoraRetorno = document.createElement('td'); 
+            
         
-        const tr = document.createElement('tr');
-        const thIndex = document.createElement('th'); 
-        const thNome = document.createElement('th');
-        const tdSaida = document.createElement('td');    
-        const tdHora = document.createElement('td'); 
-        const tdRetorno = document.createElement('td');
-        const tdHoraRetorno = document.createElement('td'); 
-        
-    
-        tr.setAttribute("data-aos", "fade-left");
-        tr.setAttribute("data-aos-delay", delay);
-        
-        delay+=50;
-        thIndex.innerHTML = index+1;
-        thNome.innerHTML = agenda.agendamentos[index]._user._nome
-        tdSaida.innerHTML = dateFormat(element._dataSaida);
-        tdHora.innerHTML = element._hora;
-        tdRetorno.innerHTML = dateFormat(element._dataRetorno);
-        tdHoraRetorno.innerHTML = element._horaRetorno;
+            tr.setAttribute("data-aos", "fade-left");
+            tr.setAttribute("data-aos-delay", delay);
+            
+            delay+=50;
+            thIndex.innerHTML = index++;
+            thNome.innerHTML = agenda.agendamentos[x]._user._nome
+            tdSaida.innerHTML = dateFormat(agenda.agendamentos[x]._dataSaida);
+            tdHora.innerHTML = agenda.agendamentos[x]._hora;
+            tdRetorno.innerHTML = dateFormat(agenda.agendamentos[x]._dataRetorno);
+            tdHoraRetorno.innerHTML = agenda.agendamentos[x]._horaRetorno;
 
-        tbody.appendChild(tr);
-        tr.appendChild(thIndex);
-        tr.appendChild(thNome);
-        tr.appendChild(tdSaida);
-        tr.appendChild(tdHora);
-        tr.appendChild(tdRetorno);
-        tr.appendChild(tdHoraRetorno);
-    });
+            tbody.appendChild(tr);
+            tr.appendChild(thIndex);
+            tr.appendChild(thNome);
+            tr.appendChild(tdSaida);
+            tr.appendChild(tdHora);
+            tr.appendChild(tdRetorno);
+            tr.appendChild(tdHoraRetorno);
+        }
     }
 }
 
 const dateFormat = (date)=>{
-    let data = new Date(date);
-    let dateFormat = new Intl.DateTimeFormat('pt-BR').format(data);
-    return dateFormat;
+    const [ano, mes, dia] = date.split('-');
+    let data = new Date(ano, mes-1, dia);
+    return data.toLocaleDateString('pt-BR');
 }
 
 montaTabela();

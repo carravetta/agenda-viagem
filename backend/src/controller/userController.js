@@ -22,7 +22,6 @@ const cadastroUsuario = async (req, res,)=>{
 
 const getUser = async (req, res)=>{
    // const user = await userModel.getUser();
-   console.log(req.user);
    
     return res.status(200).json(req.user);
 }   
