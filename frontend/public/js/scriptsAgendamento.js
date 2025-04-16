@@ -33,8 +33,13 @@ const fetchAdionaData = async()=>{
     });
 
     const novoAgendamento = await response.json();
+    console.log(novoAgendamento);
     
     return novoAgendamento
+}
+
+const criaAviso = (mensagem)=>{
+    
 }
 
 const novoAgendamento = async ()=>{
@@ -54,13 +59,22 @@ const novoAgendamento = async ()=>{
     return {message: "Valores invalidos"}
 }
 
+const verificaLogin = async()=>{
+    const user = await getUser();
+
+    if(user.message){
+        window.location.href = '/'
+    }
+}
+
 const montaTabela = async () =>{
     const usuarioLogado = document.querySelector('.header-user');
     const user = await getUser();
     const agenda = await loadData();     
     let delay = 300;
     const tbody = document.querySelector('tbody');
-    let index =1; 
+    let index =1;
+    
     if(agenda){
         usuarioLogado.innerHTML = user.email;
         for(var x = agenda.agendamentos.length-1; x>=0; x--){            
@@ -101,6 +115,6 @@ const dateFormat = (date)=>{
     let data = new Date(ano, mes-1, dia);
     return data.toLocaleDateString('pt-BR');
 }
-
+verificaLogin();
 montaTabela();
 novoAgendamento();

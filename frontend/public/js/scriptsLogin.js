@@ -1,4 +1,3 @@
-
 const fetchLogin = async()=>{
     
     const response = await fetch('http://localhost:3000/login', {
@@ -21,6 +20,26 @@ const fetchLogin = async()=>{
    }
 }
 
+const loadPage = async()=>{
+    try{
+        const response = await fetch("http://localhost:3000/login", {
+            method: 'GET',
+            credentials: "include"
+        });
+        
+        const user = await response.json();
+        console.log(user.ok);
+        
+    if(!user.message)
+        return window.location.href = "/view/index.html";
+ 
+    }catch(error){
+        console.log("Erro ao verificar autenticação", error);
+    }
+    const modal = document.querySelector("dialog");
+    modal.showModal();
+}
+
 const buttonLogin = ()=>{
     const buttonSubmit = document.querySelector('.btn-logar');
     
@@ -38,5 +57,5 @@ const buttonLogin = ()=>{
         }
     });
 }
- 
+loadPage();
 buttonLogin();

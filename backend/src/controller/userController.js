@@ -8,11 +8,11 @@ const login = async (req, res,)=>{
             httpOnly: true,
             secure: false,
             sameSite: 'Lax',
-            maxAge: 360000
+            maxAge: 3600000
         });        
         return res.status(200).json(token);
     }else
-    return res.status(400).json(token);
+    return res.status(401).json(token);
 }
 
 const cadastroUsuario = async (req, res,)=>{
@@ -21,7 +21,6 @@ const cadastroUsuario = async (req, res,)=>{
 }
 
 const getUser = async (req, res)=>{
-   // const user = await userModel.getUser();
    
     return res.status(200).json(req.user);
 }   
