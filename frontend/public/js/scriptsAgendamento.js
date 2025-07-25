@@ -1,4 +1,4 @@
-
+AOS.init();
 const loadData = async ()=>{    
     const response = await fetch("http://localhost:3000/agendamentos", {
         method: 'GET',
@@ -6,7 +6,6 @@ const loadData = async ()=>{
     });
 
     const agenda = await response.json();    
-    
     return agenda;
 }
 
@@ -41,6 +40,7 @@ const fetchAdionaData = async()=>{
 const criaAviso = (mensagem)=>{
     
 }
+
 
 const novoAgendamento = async ()=>{
     
@@ -108,6 +108,19 @@ const montaTabela = async () =>{
             tr.appendChild(tdHoraRetorno);
         }
     }
+
+    tableAddEvent();
+}
+
+const tableAddEvent = ()=>{
+   const tableElements = document.querySelectorAll("tbody tr");
+    const modalEditaAgendamento = document.querySelector(".modal-alteracao");
+    tableElements.forEach((element, index)=>{
+    element.addEventListener("click", e=>{
+        
+        modalEditaAgendamento.showModal();  
+    })
+});
 }
 
 const dateFormat = (date)=>{

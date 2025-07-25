@@ -15,11 +15,33 @@ const NeDB= require('nedb');
           if(err){
             console.log(`ERRO DE BANCO DE DADOS ${err}`);
             reject(err);
-          }else{                  
+          }else{      
+            
+            deleteOldDates(agendamentos)     
             resolve(agendamentos);
           }
       });
     });
+  }
+
+  const deleteOldDates = (agenda)=>{
+
+    var removed = 0;
+    var dataExclusao = new Date();    
+    if(agenda){
+      agenda.forEach((agendamento, index)=>{
+        
+        let dataRetorno = new Date(agendamento._dataRetorno);
+        dataRetorno.setDate(dataRetorno.getDate()+10);
+        console.log(dataRetorno);
+        if(dataRetorno < dataExclusao){
+           
+            removeAgendamento(agendamento._id);
+            removed++;
+        }       
+      });
+  }
+    return removed;
   }
 
   const addDate = async (novoAgendamento, userLogin)=>{
@@ -79,6 +101,7 @@ const NeDB= require('nedb');
       });
     });
   }
+
   
 module.exports = {
   getAll, addDate, removeAgendamento, update, removeAll

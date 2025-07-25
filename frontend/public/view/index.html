@@ -55,7 +55,7 @@
         </div>
     </section>
 
-    <dialog class="container ">
+    <dialog class="container novo-agendamento">
         <section class="modal modal-content ">
             <h1>Agendar</h1>
             <div class="form-content">
@@ -70,6 +70,28 @@
                 <input type="time" name="hr-retorno" class="hr-retorno">
                 <div class="btn-salvar">
                     <button type="submit" class="btn-salvar">Salvar</button>
+                    <button type="button"  class="btn-cancel">Cancelar</button>
+                </div>
+            </div>
+        </section>
+    </dialog>
+
+    <dialog class="container ">
+        <section class="modal modal-content modal-alteracao">
+            <h1>Editar Agendamento</h1>
+            <div class="form-content">
+                <label for="dt-saida">Data de Saída</label>
+                <input type="date" name="dt-saida" class="dt-saida">
+                <label for="dt-saida">Hora de Saída</label>
+                <input type="time" name="hr-saida" class="hr-saida">
+
+                <label for="dt-retorno">Data de Retorno</label>
+                <input type="date" name="dt-retorno" class="dt-retorno">
+                <label for="hr-saida">Hora de Retorno</label>
+                <input type="time" name="hr-retorno" class="hr-retorno">
+                <div class="btn-salvar">
+                    <button type="submit" class="btn-salvar">Atualizar</button>
+                    <button type="submit" class="btn-salvar">Excluir</button>
                     <button type="button"  class="btn-cancel">Cancelar</button>
                 </div>
             </div>
