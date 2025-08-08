@@ -3,7 +3,6 @@ const agendaController = require('./controller/agendaController');
 const userController = require('./controller/userController');
 const dateValidatorMiddleware = require('./middlewares/dateValidator')
 const authMiddleware = require('./middlewares/auth');
-const deleteOldDateMiddleware = require('./middlewares/deleteOldDate');
 const router = express.Router();
 
 

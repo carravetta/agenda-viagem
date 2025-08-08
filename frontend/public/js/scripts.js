@@ -2,23 +2,20 @@ AOS.init();
 
 const btnAgendamento = document.querySelector(".header-button");
 const modal = document.querySelector(".novo-agendamento");
-
-const btnCancel = document.querySelector(".btn-cancel");
-const btnSalvar = document.querySelector('.btn-salvar');
+const modalEdicao = document.querySelector(".modal-alteracao")
+const btnSubmit = document.querySelectorAll(".btn-submit");
+//const btnSalvar = document.querySelector('.btn-salvar');
 
 btnAgendamento.addEventListener("click", e=>{
     modal.showModal();
 });
 
-btnCancel.addEventListener("click", ()=>{
-    modal.close();
-});
-
-btnSalvar.addEventListener("click", ()=>{
-    modal.close();
-});
-
-
+btnSubmit.forEach((element, index)=>{
+    element.addEventListener("click", ()=>{
+        modal.close();
+       // modalEdicao.close()
+    });
+})
 
 
 //-----------------------------------------------

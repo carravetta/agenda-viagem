@@ -69,30 +69,31 @@
                 <label for="hr-saida">Hora de Retorno</label>
                 <input type="time" name="hr-retorno" class="hr-retorno">
                 <div class="btn-salvar">
-                    <button type="submit" class="btn-salvar">Salvar</button>
-                    <button type="button"  class="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn-salvar btn-submit">Salvar</button>
+                    <button type="button"  class="btn-cancel btn-submit">Cancelar</button>
                 </div>
             </div>
         </section>
     </dialog>
 
-    <dialog class="container ">
-        <section class="modal modal-content modal-alteracao">
+    <dialog class="container  modal-alteracao">
+        <section class="modal modal-content">
             <h1>Editar Agendamento</h1>
-            <div class="form-content">
-                <label for="dt-saida">Data de Saída</label>
-                <input type="date" name="dt-saida" class="dt-saida">
-                <label for="dt-saida">Hora de Saída</label>
-                <input type="time" name="hr-saida" class="hr-saida">
+            <div class="form-content form-edit">
+                <label for="new-dt-saida">Data de Saída</label>
+                <input type="date" name="new-dt-saida" class="new-dt-saida">
+                <label for="new-hr-saida">Hora de Saída</label>
+                <input type="time" name="new-hr-saida" class="new-hr-saida">
 
-                <label for="dt-retorno">Data de Retorno</label>
-                <input type="date" name="dt-retorno" class="dt-retorno">
-                <label for="hr-saida">Hora de Retorno</label>
-                <input type="time" name="hr-retorno" class="hr-retorno">
+                <label for="new-dt-retorno">Data de Retorno</label>
+                <input type="date" name="new-dt-retorno" class="new-dt-retorno">
+                <label for="new-hr-retorno">Hora de Retorno</label>
+                <input type="time" name="new-hr-retorno" class="new-hr-retorno">
+                <input hidden class="id">
                 <div class="btn-salvar">
-                    <button type="submit" class="btn-salvar">Atualizar</button>
-                    <button type="submit" class="btn-salvar">Excluir</button>
-                    <button type="button"  class="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn-atualizar btn-submit">Atualizar</button>
+                    <button type="submit" class="btn-excluir btn-submit">Excluir</button>
+                    <button type="button"  class="btn-cancel btn-submit">Cancelar</button>
                 </div>
             </div>
         </section>

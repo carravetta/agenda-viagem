@@ -33,7 +33,7 @@ const NeDB= require('nedb');
         
         let dataRetorno = new Date(agendamento._dataRetorno);
         dataRetorno.setDate(dataRetorno.getDate()+10);
-        console.log(dataRetorno);
+
         if(dataRetorno < dataExclusao){
            
             removeAgendamento(agendamento._id);
@@ -84,9 +84,13 @@ const NeDB= require('nedb');
     });
   }
 
-  const update = async (idUpdate, newValues)=>{
-
-    var newDate = new Agendamento(newValues._nome, newValues._email, newValues._dataSaida, newValues._dataRetorno, newValues._hora);    
+  const update = async (idUpdate, newValues, user)=>{
+    console.log("entrei no update AgendaController")
+    var newDate = new Agendamento(user.name, newValues.email, newValues.dataSaida, newValues.dataRetorno, newValues.hora);    
+     console.log(JSON.stringify(newDate)) 
+     console.log(JSON.stringify(user)) 
+     console.log(newValues);
+     
     return new Promise ((resolve, reject)=>{
       db.update({_id : idUpdate}, {$set: {
         _dataSaida: newDate.dataSaida,

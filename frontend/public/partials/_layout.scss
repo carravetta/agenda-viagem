@@ -198,7 +198,7 @@ dialog::backdrop{
         font-weight: bold;
     }
 
-    .btn-salvar{
+    .btn{
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -215,3 +215,20 @@ dialog::backdrop{
         }
     }
 }
+
+ .btn{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        
+        button, a{
+            min-width: 100px;
+            max-width: 100px;
+            padding: 8px;
+            background-color: $white-normal;
+            border-radius: 4px;
+            font-weight: 800;
+            margin-top: 24px;
+        }
+    }
