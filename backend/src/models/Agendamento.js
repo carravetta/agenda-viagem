@@ -1,12 +1,12 @@
 const User = require('./User');
 
 class Agendamento{
-    constructor( nome, email, dataSaida, dataRetorno, hora, horaRetorno){
+    constructor( nome, email, dataSaida, dataRetorno, horaSaida, horaRetorno){
     
         this._user = new User(nome, '', email);
         this._dataSaida = dataSaida;
         this._dataRetorno = dataRetorno;
-        this._hora = hora;
+        this._hora = horaSaida;
         this._horaRetorno = horaRetorno;
     }    
 

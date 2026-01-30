@@ -1,4 +1,4 @@
-const { log } = require('console');
+
 const User = require('./User');
 const Agendamento = require("./Agendamento");
 const NeDB= require('nedb');
@@ -85,17 +85,16 @@ const NeDB= require('nedb');
   }
 
   const update = async (idUpdate, newValues, user)=>{
-    console.log("entrei no update AgendaController")
-    var newDate = new Agendamento(user.name, newValues.email, newValues.dataSaida, newValues.dataRetorno, newValues.hora);    
-     console.log(JSON.stringify(newDate)) 
-     console.log(JSON.stringify(user)) 
-     console.log(newValues);
-     
+   
+    var newDate = new Agendamento(user.nome, user.email, newValues.dataSaida, newValues.dataRetorno, newValues.hora, newValues.horaRetorno);    
+
     return new Promise ((resolve, reject)=>{
       db.update({_id : idUpdate}, {$set: {
-        _dataSaida: newDate.dataSaida,
-        _dataRetorno: newDate.dataRetorno,
-        _hora: newDate.hora
+        _user: {_nome: user.nome, _email: user.email},
+        _dataSaida: newDate._dataSaida,
+        _dataRetorno: newDate._dataRetorno,
+        _hora: newDate._hora,
+        _horaRetorno: newDate._horaRetorno
       }}, (err, replaced)=>{
         if(err){
           reject(err);

@@ -4,7 +4,6 @@ const addFormats = require("ajv-formats");
 const validateNewDate = (req, res, next)=>{
 
     const {body} = req;
-    console.log(body);
     
     const schema = {
         "type" : "object",
@@ -26,7 +25,6 @@ const validateNewDate = (req, res, next)=>{
     const isValid = validate(body);
 
     if(!isValid){
-        console.log(isValid);
         
         return res.status(400).json({message : "Campos inválidos, verifique"});
     }

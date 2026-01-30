@@ -9,7 +9,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
 
-    <title>Agendamento de Horario</title>
+    <title>Controle de Quilometragem</title>
 </head>
 <body>
     <div class="bg-home">
@@ -22,33 +22,31 @@
                 <div class="header-logo" data-aos="fade-down" data-aos-delay="300">
                     <img src="/assets/logo.png" alt="Foto do carro" data-aos="flip-right" data-aos-delay="300" >
                 </div>
-                
-                <div class="btn-controleKM" data-aos="fade-up" data-aos-delay="300">
-                    <a class="btn-controleKM" href="#">Controle de KM</a>
-                </div>
-
+    
                 <div class="header-user" data-aos="fade-down" data-aos-delay="300">
                     <a  href="">Usuario</a>
                 </div>
             </nav>
             <div class="main-title container" data-aos="fade-left" data-aos-delay="300">
-                <h1>Sistema de agendamento de Horários</h1>
+                <h1>Controle de Quilometragem</h1>
             </div>
         </header>
     </div>
 
     <section class="agendamentos">
-        <h2>Agendamentos</h2>
+        <h2>Tabela de Controle</h2>
         <div class="container">       
             <table>
                 <thead>
                     <tr data-aos="fade-left" data-aos-delay="300">
                         <th>#</th>
-                        <th>Usuário</th>
+                        <th>Motorista</th>
                         <th>Data de saída</th>
                         <th class="th-hr-saida">Horario de Saída</th>
+                        <th>KM Atual</th>
                         <th>Data de retorno</th>
                         <th class="th-hr-retorno">Horário de retorno</th>
+                        <th>KM Final</th>
                        
                     </tr>
                 </thead>
@@ -61,17 +59,26 @@
 
     <dialog class="container novo-agendamento">
         <section class="modal modal-content ">
-            <h1>Agendar</h1>
+            <h1>Adicionar</h1>
             <div class="form-content">
                 <label for="dt-saida">Data de Saída</label>
                 <input type="date" name="dt-saida" class="dt-saida">
+
                 <label for="dt-saida">Hora de Saída</label>
                 <input type="time" name="hr-saida" class="hr-saida">
 
+                <label for="km-saida">KM Saída</label>
+                <input type="number" name="km-saida" class="hr-saida">
+
                 <label for="dt-retorno">Data de Retorno</label>
                 <input type="date" name="dt-retorno" class="dt-retorno">
+
                 <label for="hr-saida">Hora de Retorno</label>
                 <input type="time" name="hr-retorno" class="hr-retorno">
+
+                <label for="km-retorno">KM Retorno</label>
+                <input type="number" name="km-retorno" class="hr-saida">
+                
                 <div class="btn-salvar">
                     <button type="submit" class="btn-salvar btn-submit">Salvar</button>
                     <button type="button"  class="btn-cancel btn-submit">Cancelar</button>
@@ -82,24 +89,30 @@
 
     <dialog class="container  modal-alteracao">
         <section class="modal modal-content">
-            <h1>Editar Agendamento</h1>
-            <div class="form-content form-edit">
-                <label for="new-dt-saida">Data de Saída</label>
-                <input type="date" name="new-dt-saida" class="new-dt-saida">
-                <label for="new-hr-saida">Hora de Saída</label>
-                <input type="time" name="new-hr-saida" class="new-hr-saida">
+            <h1>Editar Saída</h1>
+            <div class="form-content">
+                <label for="dt-saida">Data de Saída</label>
+                <input type="date" name="dt-saida" class="dt-saida">
 
-                <label for="new-dt-retorno">Data de Retorno</label>
-                <input type="date" name="new-dt-retorno" class="new-dt-retorno">
-                <label for="new-hr-retorno">Hora de Retorno</label>
-                <input type="time" name="new-hr-retorno" class="new-hr-retorno">
-                <input hidden class="id">
+                <label for="dt-saida">Hora de Saída</label>
+                <input type="time" name="hr-saida" class="hr-saida">
+
+                <label for="km-saida">KM Saída</label>
+                <input type="number" name="km-saida" class="hr-saida">
+
+                <label for="dt-retorno">Data de Retorno</label>
+                <input type="date" name="dt-retorno" class="dt-retorno">
+
+                <label for="hr-saida">Hora de Retorno</label>
+                <input type="time" name="hr-retorno" class="hr-retorno">
+
+                <label for="km-retorno">KM Retorno</label>
+                <input type="number" name="km-retorno" class="hr-saida">
+                
                 <div class="btn-salvar">
-                    <button type="submit" class="btn-atualizar btn-submit">Atualizar</button>
-                    <button type="submit" class="btn-excluir btn-submit">Excluir</button>
-                    <button type="button"  class="btn-cancel-edit btn-submit">Cancelar</button>
+                    <button type="submit" class="btn-salvar btn-submit">Salvar</button>
+                    <button type="button"  class="btn-cancel btn-submit">Cancelar</button>
                 </div>
-            </div>
         </section>
     </dialog>
    

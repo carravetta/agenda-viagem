@@ -106,4 +106,5 @@ const login = async (user)=>{
         return token;
 }
 
+
 module.exports = {login, cadastroUsuario}

@@ -16,6 +16,7 @@ const fetchLogin = async()=>{
    if(login === null || login === undefined){
         return "Usuario inválido!"
    }else{
+        loadPage();
         return login;  
    }
 }
@@ -26,6 +27,7 @@ const loadPage = async()=>{
             method: 'GET',
             credentials: "include"
         });
+        console.log("RESPONSE DO LOADPAGE: "+response.json());
         
         const user = await response.json();
         console.log(user.ok);
@@ -36,8 +38,8 @@ const loadPage = async()=>{
     }catch(error){
         console.log("Erro ao verificar autenticação", error);
     }
-    const modal = document.querySelector("dialog");
-    modal.showModal();
+    //const modal = document.querySelector("dialog");
+    //modal.showModal();
 }
 
 const buttonLogin = ()=>{
@@ -57,5 +59,5 @@ const buttonLogin = ()=>{
         }
     });
 }
-loadPage();
+//loadPage();
 buttonLogin();

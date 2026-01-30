@@ -16,7 +16,7 @@ header {
 }
 
 .header-button {
-  color: #fff; 
+  color: #fff;
   border: solid 1px #0077b6;
   background-color: #0077b6;
   padding: 8px;
@@ -72,11 +72,11 @@ header {
   align-items: center;
 }
 
-.header-content::before {
+.bg-home::before {
   content: "";
   display: block;
   position: absolute;
-  background-image: linear-gradient(to bottom, rgba(237, 234, 239, 0.1), #fff), url(/assets/strada.jpg);
+  background-image: linear-gradient(to bottom, rgba(237, 234, 239, 0.1), #fff), url(/frontend/public/assets/strada.jpg);
   left: 0;
   top: 0;
   width: 100%;
@@ -119,7 +119,6 @@ header {
   display: flex;
   flex-direction: column;
   gap: 28px;
-  height: 100%;
 }
 
 table {
@@ -238,13 +237,29 @@ dialog::backdrop {
 .form-content label {
   font-weight: bold;
 }
-.form-content .btn-salvar {
+.form-content .btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
-.form-content .btn-salvar button, .form-content .btn-salvar a {
+.form-content .btn button, .form-content .btn a {
+  min-width: 100px;
+  max-width: 100px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-weight: 800;
+  margin-top: 24px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.btn button, .btn a {
   min-width: 100px;
   max-width: 100px;
   padding: 8px;

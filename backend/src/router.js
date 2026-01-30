@@ -13,6 +13,6 @@ router.get('/agendamentos', authMiddleware.auth, agendaController.getAll);
 router.post('/agendamentos', authMiddleware.auth, dateValidatorMiddleware.validateNewDate, agendaController.addDate);
 router.delete('/agendamentos/:id',authMiddleware.auth, agendaController.removeAgendamento);
 router.delete('/agendamentos', authMiddleware.auth, agendaController.removeAll);
-router.put('/agendamentos/:id',authMiddleware.auth, agendaController.update);
+router.put('/agendamentos/:id',authMiddleware.auth, dateValidatorMiddleware.validateNewDate, agendaController.update);
 
 module.exports = router;
